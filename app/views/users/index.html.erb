@@ -1,0 +1,62 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-4">
+      <!--User info-->
+      <div class="container">
+        <h2>User info</h2>
+        <%= image_tag @user.get_profile_image(100, 100) %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="row">name</th>
+              <td><strong><%= @user.name %></strong></td>
+            </tr>
+            <tr>
+              <th class="row">introduction</th>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+          <a href="/users/sign_in" class="btn btn-outline-secondary mb-2 w-100" tabindex="-1" role="button" aria-disabled="true">edit</a>
+      </div>
+      
+      <!--new book-->
+      <div class="container">
+        <h2>New book</h2>
+        <%= form_with model: @book do |f| %>
+          <p>Title</p>
+          <%= f.text_field :title, class: "w-100" %>
+          <p>Opinion</p>
+          <%= f.text_area :opinion, class: "w-100" %>
+          <%= f.submit 'Create Book', class: "btn btn-success mb-2" %>
+        <% end %>
+      </div>
+    
+    </div>
+    
+    <!--Books-->
+    <div class="col-8">
+      <div class="container">
+        <h2>Users</h2>
+        
+        <table class="table">
+          <thead class="w-100">
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
