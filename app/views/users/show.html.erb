@@ -47,13 +47,16 @@
               <th>Opinion</th>
             </tr>
           </thead>
-          <thead>
+          
+          <tbody>
+            <% @books.each do |book| %>
             <tr>
               <th></th>
-              <th></th>
-              <th></th>
+              <td><%= book.title %></td>
+              <td><%= book.body %></td>
             </tr>
-          </thead>
+            <% end %>
+          </tbody>
         </table>
         
       </div>
