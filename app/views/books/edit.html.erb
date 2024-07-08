@@ -1,5 +1,20 @@
 <div class="container my-3">
   <div class="row justify-content-center">
+    <div class="col-8">
+      <% if @book.errors.any? %>
+       <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3">
+  <div class="row justify-content-center">
     <div class="col-6">
       
       <h1>Editing Book</h1>
@@ -13,9 +28,9 @@
       
       <!--menu-->
       <div class="row">
-        <%= link_to 'Show', books_path %>
+        <%= link_to 'Show', book_path %>
         <p class="px-1">|</p>
-        <%= link_to 'Back', book_path %>
+        <%= link_to 'Back', books_path %>
       </div>
     </div>
   </div>

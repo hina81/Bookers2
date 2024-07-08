@@ -1,30 +1,38 @@
 <div class="container">
-        <!--User info-->
-        <h2>User info</h2>
-        <%= image_tag user.get_profile_image(100, 100) %>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th class="row">name</th>
-              <td><strong><%= user.name %></strong></td>
-            </tr>
-            <tr>
-              <th class="row">introduction</th>
-              <td><%= user.introduction %></td>
-            </tr>
-          </tbody>
-        </table>
-        <%= link_to 'edit', edit_user_path(current_user), class: "btn btn-outline-secondary mb-2 w-100" %>
-      </div>
+  <!--User info-->
+  <h2>User info</h2>
+  <%= image_tag user.get_profile_image(100, 100) %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th class="row">name</th>
+        <td><strong><%= user.name %></strong></td>
+      </tr>
+      <tr>
+        <th class="row">introduction</th>
+        <td><%= user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% if user == current_user %>
+    <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary mb-2 w-100" do %>
+      <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  <% else %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary mb-2 w-100" do %>
+      <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  <% end %>
+</div>
       
-      <!--new book-->
-      <div class="container">
-        <h2>New book</h2>
-        <%= form_with model: book do |f| %>
-          <p>Title</p>
-          <%= f.text_field :title, class: "w-100" %>
-          <p>Opinion</p>
-          <%= f.text_area :body, class: "w-100" %>
-          <%= f.submit 'Create Book', class: "btn btn-success mb-2" %>
-        <% end %>
-      </div>
+<!--new book-->
+<div class="container">
+  <h2>New book</h2>
+  <%= form_with model: book do |f| %>
+    <p>Title</p>
+    <%= f.text_field :title, class: "w-100" %>
+    <p>Opinion</p>
+    <%= f.text_area :body, class: "w-100" %>
+    <%= f.submit 'Create Book', class: "btn btn-success mb-2" %>
+  <% end %>
+</div>

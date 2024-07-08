@@ -1,5 +1,20 @@
 <div class="container my-3">
   <div class="row justify-content-center">
+    <div class="col-8">
+      <% if @user.errors.any? %>
+       <h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3">
+  <div class="row justify-content-center">
     <div class="col-6">
       
       <h1>User info</h1>

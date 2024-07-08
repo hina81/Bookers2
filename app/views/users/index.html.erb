@@ -2,12 +2,12 @@
   <div class="row">
     
     <!--left bar-->
-    <div class="col-4">
-      <%= render 'books/leftbar', book: @book, user: @user %>
+    <div class="col-md-3">
+      <%= render 'books/leftbar', book: @book_n, user: @user %>
     </div>
 
     <!--Books-->
-    <div class="col-8">
+    <div class="col-md-8 offset-md-1">
       <div class="container">
         <h2>Users</h2>
 
@@ -22,7 +22,10 @@
           <tbody>
             <% @users.each do |user| %>
             <tr>
-              <th><%= image_tag user.get_profile_image(75, 75) %></th>
+              <th><%= link_to(user_path(user.id)) do %>
+                  <%= image_tag user.get_profile_image(75, 75) %>
+                <% end %>
+              </th>
               <th><%= user.name %></th>
               <th><%= link_to "Show", user_path(user) %></th>
             </tr>

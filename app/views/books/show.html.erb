@@ -1,12 +1,23 @@
 <div class="container my-3">
+  <% if @book.errors.any? %>
+   <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="container my-3">
   <div class="row">
     <!-- left bar -->
-    <div class="col-4">
-      <%= render 'leftbar', book: @book, user: @user %>
+    <div class="col-md-3">
+      <%= render 'leftbar', book: @book_n, user: @user %>
     </div>
     
     <!--Books-->
-    <div class="col-8">
+    <div class="col-md-8 offset-md-1">
       <div class="container">
         <h2>Book detail</h2>
         
@@ -15,13 +26,13 @@
             <tr>
               <td>
                 <%= image_tag @book.user.get_profile_image(75, 75) %>
-                <%=link_to @book.user.name, users_path %>
+                <%=link_to @book.user.name, user_path(@user) %>
               </td>
-              <td><%= link_to @book.title, books_path %></td>
+              <td><%= link_to @book.title, book_path(@book.id) %></td>
               <td><%= @book.body %></td>
               
             <% if @book.user == current_user %>
-              <td><%= link_to 'Edit', edit_book_path, class: "btn btn-success mb-2 w-100" %></td>
+              <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success mb-2 w-100" %></td>
               <td><%= link_to 'Destroy', book_path(@book), method: :delete, class: "btn btn-danger mb-2 w-100" %></td>
             <% end %>
             </tr>
